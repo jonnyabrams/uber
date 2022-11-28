@@ -1,16 +1,19 @@
 import { FlatList, Image, Text, TouchableOpacity, View } from "react-native";
+import { Icon } from "@rneui/themed";
 
 const data = [
   {
     id: "123",
     title: "Get a ride",
-    image: "https://www.uber-assets.com/image/upload/f_auto,q_auto:eco,c_fill,w_485,h_385/f_auto,q_auto/products/carousel/UberX.png",
+    image:
+      "https://www.uber-assets.com/image/upload/f_auto,q_auto:eco,c_fill,w_485,h_385/f_auto,q_auto/products/carousel/UberX.png",
     screen: "MapScreen",
   },
   {
     id: "456",
     title: "Order food",
-    image: "https://i.pinimg.com/originals/4f/eb/74/4feb745209cf7aba57463b20d27b61e3.png",
+    image:
+      "https://i.pinimg.com/originals/4f/eb/74/4feb745209cf7aba57463b20d27b61e3.png",
     screen: "EatsScreen",
   },
 ];
@@ -26,9 +29,22 @@ const NavOptions = () => {
           <View>
             <Image
               style={{ width: 120, height: 120, resizeMode: "contain" }}
-              source={{uri: item.image}}
+              source={{ uri: item.image }}
             />
             <Text className="mt-2 text-lg font-semibold">{item.title}</Text>
+            <Icon
+              // className="p-2 bg-black rounded-full w-10 mt-4"
+              style={{
+                backgroundColor: "black",
+                borderRadius: 9999,
+                width: 30,
+                padding: 2,
+                marginTop: 4,
+              }}
+              name="arrowright"
+              color="white"
+              type="antdesign"
+            />
           </View>
         </TouchableOpacity>
       )}
