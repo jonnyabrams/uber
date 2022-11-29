@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import { Provider } from "react-redux";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import { NavigationContainer } from "@react-navigation/native";
 
 import HomeScreen from "./src/screens/HomeScreen";
 import { store } from "./src/store";
@@ -8,9 +9,11 @@ import { store } from "./src/store";
 const App = () => {
   return (
     <Provider store={store}>
-      <SafeAreaProvider>
-        <HomeScreen />
-      </SafeAreaProvider>
+      <NavigationContainer>
+        <SafeAreaProvider>
+          <HomeScreen />
+        </SafeAreaProvider>
+      </NavigationContainer>
     </Provider>
   );
 };
