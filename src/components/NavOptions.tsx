@@ -1,5 +1,7 @@
 import { FlatList, Image, Text, TouchableOpacity, View } from "react-native";
 import { Icon } from "@rneui/themed";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 const data = [
   {
@@ -19,13 +21,15 @@ const data = [
 ];
 
 const NavOptions = () => {
+  const navigation = useNavigation<NativeStackNavigationProp<any>>();
+  
   return (
     <FlatList
       data={data}
       horizontal
       keyExtractor={(item) => item.id}
       renderItem={({ item }) => (
-        <TouchableOpacity className="p-2 pl-6 pb-8 pt-4 bg-gray-200 m-2 w-40">
+        <TouchableOpacity onPress={() => navigation.navigate(item.screen)} className="w-40 p-2 pt-4 pb-8 pl-6 m-2 bg-gray-200">
           <View>
             <Image
               style={{ width: 120, height: 120, resizeMode: "contain" }}
@@ -33,7 +37,7 @@ const NavOptions = () => {
             />
             <Text className="mt-2 text-lg font-semibold">{item.title}</Text>
             <Icon
-              // className="p-2 bg-black rounded-full w-10 mt-4"
+              // className="w-10 p-2 mt-4 bg-black rounded-full"
               style={{
                 backgroundColor: "black",
                 borderRadius: 9999,
