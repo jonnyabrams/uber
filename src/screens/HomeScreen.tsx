@@ -3,8 +3,12 @@ import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplet
 
 import NavOptions from "../components/NavOptions";
 import { GOOGLE_MAPS_APIKEY } from "@env";
+import { useAppDispatch } from "../hooks";
+import { setDestination, setOrigin } from "../slices/navSlice";
 
 const HomeScreen = () => {
+  const dispatch = useAppDispatch();
+
   return (
     <SafeAreaView className="h-full bg-white">
       <View className="p-5">
@@ -22,6 +26,21 @@ const HomeScreen = () => {
             textInput: {
               fontSize: 18,
             },
+          }}
+          onPress={(data, details = null) => {
+            dispatch(
+              setOrigin({
+                location: details?.geometry.location,
+                description: data?.description,
+              })
+            );
+            
+            // in case of going back and forth between screens 
+            dispatch(setDestination(null));
+          }}
+          fetchDetails={true}
+          textInputProps={{
+            returnKeyType: "search",
           }}
           enablePoweredByContainer={false}
           minLength={2}
