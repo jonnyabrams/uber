@@ -13,6 +13,24 @@ const HomeScreen = () => {
           source={require("../../assets/logo.png")}
         />
 
+        <GooglePlacesAutocomplete
+          placeholder="Where from?"
+          styles={{
+            container: {
+              flex: 0,
+            },
+            textInput: {
+              fontSize: 18,
+            },
+          }}
+          query={{
+            key: GOOGLE_MAPS_APIKEY,
+            language: "en",
+          }}
+          nearbyPlacesAPI="GooglePlacesSearch"
+          debounce={400}
+        />
+
         <NavOptions />
       </View>
     </SafeAreaView>
