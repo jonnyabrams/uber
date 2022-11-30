@@ -23,6 +23,8 @@ const HomeScreen = () => {
               fontSize: 18,
             },
           }}
+          enablePoweredByContainer={false}
+          minLength={2}
           query={{
             key: GOOGLE_MAPS_APIKEY,
             language: "en",
