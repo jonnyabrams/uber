@@ -3,6 +3,9 @@ import { Icon } from "@rneui/themed";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
+import { useAppSelector } from "../hooks";
+import { selectOrigin } from "../slices/navSlice";
+
 const data = [
   {
     id: "123",
@@ -22,14 +25,19 @@ const data = [
 
 const NavOptions = () => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
-  
+  const origin = useAppSelector(selectOrigin)
+
   return (
     <FlatList
       data={data}
       horizontal
       keyExtractor={(item) => item.id}
       renderItem={({ item }) => (
-        <TouchableOpacity onPress={() => navigation.navigate(item.screen)} className="w-40 p-2 pt-4 pb-8 pl-6 m-2 bg-gray-200">
+        <TouchableOpacity
+          onPress={() => navigation.navigate(item.screen)}
+          className="w-40 p-2 pt-4 pb-8 pl-6 m-2 bg-gray-200"
+          disabled={!origin}
+        >
           <View>
             <Image
               style={{ width: 120, height: 120, resizeMode: "contain" }}
