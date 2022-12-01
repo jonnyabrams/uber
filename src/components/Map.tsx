@@ -16,8 +16,8 @@ const Map = () => {
         latitude: origin?.location.lat,
         // @ts-ignore
         longitude: origin?.location.lng,
-        latitudeDelta: 0.0922,
-        longitudeDelta: 0.0421,
+        latitudeDelta: 0.005,
+        longitudeDelta: 0.005,
       }}
     />
   );
