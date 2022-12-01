@@ -5,8 +5,8 @@ import { useAppSelector } from "../hooks";
 import { selectOrigin } from "../slices/navSlice";
 
 const Map = () => {
-  const origin = useAppSelector(selectOrigin)
-  
+  const origin = useAppSelector(selectOrigin);
+
   return (
     <MapView
       className="flex-1"
@@ -19,7 +19,19 @@ const Map = () => {
         latitudeDelta: 0.005,
         longitudeDelta: 0.005,
       }}
-    />
+    >
+      {origin?.location && (
+        <Marker
+          coordinate={{
+            latitude: origin.location.lat,
+            longitude: origin.location.lng,
+          }}
+          title="Origin"
+          description={origin.description}
+          identifier="origin"
+        />
+      )}
+    </MapView>
   );
 };
 
