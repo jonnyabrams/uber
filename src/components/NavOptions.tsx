@@ -38,7 +38,7 @@ const NavOptions = () => {
           className="w-40 p-2 pt-4 pb-8 pl-6 m-2 bg-gray-200"
           disabled={!origin}
         >
-          <View>
+          <View className={`${!origin && "opacity-20"}`}>
             <Image
               style={{ width: 120, height: 120, resizeMode: "contain" }}
               source={{ uri: item.image }}
