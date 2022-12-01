@@ -29,15 +29,15 @@ export const { setOrigin, setDestination, setTravelTimeInfo } =
 
 // Selectors
 export const selectOrigin = (state: RootState) => {
-  state.nav.origin;
+  return state.nav.origin;
 };
 
 export const selectDestination = (state: RootState) => {
-  state.nav.destination;
+  return state.nav.destination;
 };
 
 export const selectTravelTimeInfo = (state: RootState) => {
-  state.nav.travelTimeInfo;
+  return state.nav.travelTimeInfo;
 };
 
 export default navSlice.reducer;
