@@ -10,6 +10,6 @@ export type originType = {
 
 export type navType = {
   origin: originType | null;
-  destination: null;
+  destination: originType | null;
   travelTimeInfo: null;
 }
