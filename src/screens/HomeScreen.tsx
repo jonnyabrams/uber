@@ -1,10 +1,11 @@
 import { StyleSheet, Text, View, SafeAreaView, Image } from "react-native";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 
-import NavOptions from "../components/NavOptions";
 import { GOOGLE_MAPS_APIKEY } from "@env";
 import { useAppDispatch } from "../hooks";
 import { setDestination, setOrigin } from "../slices/navSlice";
+import NavOptions from "../components/NavOptions";
+import NavFavourites from "../components/NavFavourites";
 
 const HomeScreen = () => {
   const dispatch = useAppDispatch();
@@ -53,6 +54,7 @@ const HomeScreen = () => {
         />
 
         <NavOptions />
+        <NavFavourites />
       </View>
     </SafeAreaView>
   );

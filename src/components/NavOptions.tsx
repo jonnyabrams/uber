@@ -45,7 +45,6 @@ const NavOptions = () => {
             />
             <Text className="mt-2 text-lg font-semibold">{item.title}</Text>
             <Icon
-              // className="w-10 p-2 mt-4 bg-black rounded-full"
               style={{
                 backgroundColor: "black",
                 borderRadius: 9999,
