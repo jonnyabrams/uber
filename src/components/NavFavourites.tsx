@@ -14,6 +14,12 @@ const data = [
     location: "Work",
     destination: "Work Street, London, UK",
   },
+  {
+    id: "789",
+    icon: "airplane-outline",
+    location: "Airport",
+    destination: "Plane Street, London, UK",
+  },
 ];
 
 const NavFavourites = () => {
@@ -21,6 +27,10 @@ const NavFavourites = () => {
     <FlatList
       data={data}
       keyExtractor={(item) => item.id}
+      ItemSeparatorComponent={() => (
+        // combine tailwind with inline style so height can go lower than 1
+        <View className="bg-gray-200" style={{ height: 0.5 }} />
+      )}
       renderItem={({ item: { location, destination, icon } }) => (
         <TouchableOpacity className="flex-row items-center p-5">
           <Icon
