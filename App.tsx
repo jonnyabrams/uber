@@ -1,4 +1,4 @@
-import { KeyboardAvoidingView } from "react-native";
+import { KeyboardAvoidingView, Platform } from "react-native";
 import { Provider } from "react-redux";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { NavigationContainer } from "@react-navigation/native";
@@ -14,7 +14,10 @@ const App = () => {
     <Provider store={store}>
       <NavigationContainer>
         <SafeAreaProvider>
-          <KeyboardAvoidingView className="flex-1">
+          <KeyboardAvoidingView
+            behavior={Platform.OS === "ios" ? "padding" : "height"}
+            className="flex-1"
+          >
             <Stack.Navigator>
               <Stack.Screen
                 name="HomeScreen"
