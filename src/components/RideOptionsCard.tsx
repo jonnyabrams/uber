@@ -1,7 +1,38 @@
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { Icon } from "@rneui/themed";
-import { View, Text, SafeAreaView, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  SafeAreaView,
+  TouchableOpacity,
+  FlatList,
+  Image,
+} from "react-native";
+
+const data = [
+  {
+    id: "Uber-X-123",
+    title: "Uber X",
+    multiplier: 1,
+    image:
+      "https://www.uber-assets.com/image/upload/f_auto,q_auto:eco,c_fill,w_485,h_385/f_auto,q_auto/products/carousel/UberX.png",
+  },
+  {
+    id: "Uber-XL-456",
+    title: "Uber XL",
+    multiplier: 1.2,
+    image:
+      "https://www.uber-assets.com/image/upload/f_auto,q_auto:eco,c_fill,w_485,h_385/f_auto,q_auto/products/carousel/UberXL.png",
+  },
+  {
+    id: "Uber-LUX-789",
+    title: "Uber LUX",
+    multiplier: 1.75,
+    image:
+      "https://www.uber-assets.com/image/upload/f_auto,q_auto:eco,c_fill,w_485,h_385/f_auto,q_auto/products/carousel/Lux.png",
+  },
+];
 
 const RideOptionsCard = () => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
@@ -17,6 +48,24 @@ const RideOptionsCard = () => {
         </TouchableOpacity>
         <Text className="py-5 text-xl text-center">Select a Ride</Text>
       </View>
+
+      <FlatList
+        data={data}
+        keyExtractor={(item) => item.id}
+        // trick to destructure item's properties but still get whole item too
+        renderItem={({ item: { id, title, multiplier, image }, item }) => (
+          <TouchableOpacity>
+            <Image
+              style={{
+                width: 100,
+                height: 100,
+                resizeMode: "contain",
+              }}
+              source={{ uri: image }}
+            />
+          </TouchableOpacity>
+        )}
+      />
     </SafeAreaView>
   );
 };
