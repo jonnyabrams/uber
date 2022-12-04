@@ -8,8 +8,19 @@ export type originType = {
   description: string;
 }
 
+export type distanceType = {
+  text: string;
+  value: number
+}
+
+export type travelTimeInfoType = {
+  distance: distanceType;
+  duration: distanceType;
+  status: string;
+}
+
 export type navType = {
   origin: originType | null;
   destination: originType | null;
-  travelTimeInfo: null;
+  travelTimeInfo: travelTimeInfoType | null;
 }

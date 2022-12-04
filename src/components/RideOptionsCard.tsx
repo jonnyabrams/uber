@@ -48,7 +48,7 @@ const data = [
 const RideOptionsCard = () => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
   const [selected, setSelected] = useState<ItemType | null>(null);
-  const travelTimeInfo = useAppSelector(selectTravelTimeInfo)
+  const travelTimeInfo = useAppSelector(selectTravelTimeInfo);
 
   return (
     <SafeAreaView className="flex-grow bg-white">
@@ -59,7 +59,7 @@ const RideOptionsCard = () => {
         >
           <Icon name="chevron-left" type="fontawesome" />
         </TouchableOpacity>
-        <Text className="py-5 text-xl text-center">Select a Ride</Text>
+        <Text className="py-5 text-xl text-center">Select a Ride - {travelTimeInfo?.distance.text}</Text>
       </View>
 
       <FlatList
@@ -83,15 +83,20 @@ const RideOptionsCard = () => {
             />
             <View>
               <Text>{title}</Text>
-              <Text>Travel time...</Text>
+              <Text>{travelTimeInfo?.duration.text} Travel Time</Text>
             </View>
             <Text>£20</Text>
           </TouchableOpacity>
         )}
       />
       <View>
-        <TouchableOpacity disabled={!selected} className={`py-3 m-3 ${selected ? "bg-black" : "bg-gray-200"}`}>
-          <Text className="text-xl text-center text-white">Choose {selected?.title}</Text>
+        <TouchableOpacity
+          disabled={!selected}
+          className={`py-3 m-3 ${selected ? "bg-black" : "bg-gray-200"}`}
+        >
+          <Text className="text-xl text-center text-white">
+            Choose {selected?.title}
+          </Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
