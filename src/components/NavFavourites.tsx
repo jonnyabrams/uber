@@ -14,12 +14,12 @@ const data = [
     location: "Work",
     destination: "Work Street, London, UK",
   },
-  {
-    id: "789",
-    icon: "airplane-outline",
-    location: "Airport",
-    destination: "Plane Street, London, UK",
-  },
+  // {
+  //   id: "789",
+  //   icon: "airplane-outline",
+  //   location: "Airport",
+  //   destination: "Plane Street, London, UK",
+  // },
 ];
 
 const NavFavourites = () => {
