@@ -1,6 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { Icon } from "@rneui/themed";
+import { useState } from "react";
 import {
   View,
   Text,
@@ -9,6 +10,13 @@ import {
   FlatList,
   Image,
 } from "react-native";
+
+type ItemType = {
+  id: string;
+  title: string;
+  multiplier: number;
+  image: string;
+};
 
 const data = [
   {
@@ -36,6 +44,7 @@ const data = [
 
 const RideOptionsCard = () => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
+  const [selected, setSelected] = useState<ItemType | null>(null);
 
   return (
     <SafeAreaView className="flex-grow bg-white">
@@ -54,7 +63,10 @@ const RideOptionsCard = () => {
         keyExtractor={(item) => item.id}
         // trick to destructure item's properties but still get whole item too
         renderItem={({ item: { id, title, multiplier, image }, item }) => (
-          <TouchableOpacity className="flex-row items-center justify-between px-10">
+          <TouchableOpacity
+            onPress={() => setSelected(item)}
+            className={`flex-row items-center justify-between px-10 ${id === selected?.id && "bg-gray-200" }`}
+          >
             <Image
               style={{
                 width: 100,
@@ -71,6 +83,9 @@ const RideOptionsCard = () => {
           </TouchableOpacity>
         )}
       />
+      {/* <View>
+        <TouchableOpacity>Choose {selected?.title}</TouchableOpacity>
+      </View> */}
     </SafeAreaView>
   );
 };
