@@ -56,3 +56,4 @@ const NavFavourites = () => {
 };
 
 export default NavFavourites;
+  
