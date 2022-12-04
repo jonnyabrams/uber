@@ -65,7 +65,9 @@ const RideOptionsCard = () => {
         renderItem={({ item: { id, title, multiplier, image }, item }) => (
           <TouchableOpacity
             onPress={() => setSelected(item)}
-            className={`flex-row items-center justify-between px-10 ${id === selected?.id && "bg-gray-200" }`}
+            className={`flex-row items-center justify-between px-10 ${
+              id === selected?.id && "bg-gray-200"
+            }`}
           >
             <Image
               style={{
@@ -83,9 +85,11 @@ const RideOptionsCard = () => {
           </TouchableOpacity>
         )}
       />
-      {/* <View>
-        <TouchableOpacity>Choose {selected?.title}</TouchableOpacity>
-      </View> */}
+      <View>
+        <TouchableOpacity disabled={!selected} className={`py-3 m-3 ${selected ? "bg-black" : "bg-gray-200"}`}>
+          <Text className="text-xl text-center text-white">Choose {selected?.title}</Text>
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 };
