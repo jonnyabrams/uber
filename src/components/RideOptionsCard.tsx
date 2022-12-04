@@ -11,6 +11,9 @@ import {
   Image,
 } from "react-native";
 
+import { useAppSelector } from "../hooks";
+import { selectTravelTimeInfo } from "../slices/navSlice";
+
 type ItemType = {
   id: string;
   title: string;
@@ -45,6 +48,7 @@ const data = [
 const RideOptionsCard = () => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
   const [selected, setSelected] = useState<ItemType | null>(null);
+  const travelTimeInfo = useAppSelector(selectTravelTimeInfo)
 
   return (
     <SafeAreaView className="flex-grow bg-white">
