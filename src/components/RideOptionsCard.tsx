@@ -45,6 +45,8 @@ const data = [
   },
 ];
 
+const SURGE_CHARGE_RATE = 1.5;
+
 const RideOptionsCard = () => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
   const [selected, setSelected] = useState<ItemType | null>(null);
@@ -59,7 +61,9 @@ const RideOptionsCard = () => {
         >
           <Icon name="chevron-left" type="fontawesome" />
         </TouchableOpacity>
-        <Text className="py-5 text-xl text-center">Select a Ride - {travelTimeInfo?.distance.text}</Text>
+        <Text className="py-5 text-xl text-center">
+          Select a Ride - {travelTimeInfo?.distance.text}les
+        </Text>
       </View>
 
       <FlatList
@@ -82,10 +86,21 @@ const RideOptionsCard = () => {
               source={{ uri: image }}
             />
             <View>
-              <Text>{title}</Text>
+              <Text className="text-xl font-semibold">{title}</Text>
               <Text>{travelTimeInfo?.duration.text} Travel Time</Text>
             </View>
-            <Text>£20</Text>
+            <Text>
+              {travelTimeInfo &&
+                new Intl.NumberFormat("en-gb", {
+                  style: "currency",
+                  currency: "GBP",
+                }).format(
+                  (travelTimeInfo.duration.value *
+                    SURGE_CHARGE_RATE *
+                    multiplier) /
+                    100
+                )}
+            </Text>
           </TouchableOpacity>
         )}
       />
