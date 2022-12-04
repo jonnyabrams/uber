@@ -54,7 +54,7 @@ const RideOptionsCard = () => {
         keyExtractor={(item) => item.id}
         // trick to destructure item's properties but still get whole item too
         renderItem={({ item: { id, title, multiplier, image }, item }) => (
-          <TouchableOpacity>
+          <TouchableOpacity className="flex-row items-center justify-between px-10">
             <Image
               style={{
                 width: 100,
@@ -63,6 +63,11 @@ const RideOptionsCard = () => {
               }}
               source={{ uri: image }}
             />
+            <View>
+              <Text>{title}</Text>
+              <Text>Travel time...</Text>
+            </View>
+            <Text>£20</Text>
           </TouchableOpacity>
         )}
       />
